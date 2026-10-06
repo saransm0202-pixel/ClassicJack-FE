@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  min-height: 100%;
+}
+
+.app-main {
+  display: block;
+  min-height: 70vh;
+}
+
+.app-main--console {
+  padding-top: var(--header-h);
+}
+
+::selection {
+  background: var(--c-accent);
+  color: #17130c;
+}
+
+/* Custom scrollbar (Chromium/WebKit) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--c-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-line-strong);
+  border-radius: 8px;
+  border: 2px solid var(--c-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-accent);
+}
+
+/* Focus affordance */
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+}

@@ -1,0 +1,119 @@
+@if (project(); as p) {
+  <article class="pd">
+    <header class="pd__hero">
+      <img [src]="p.image" [alt]="p.name" fetchpriority="high" appImageSafe />
+      <div class="pd__hero-scrim" aria-hidden="true"></div>
+      <div class="container pd__hero-copy">
+        <p class="text-kicker pd__hero-kicker">{{ p.type }} · {{ p.year }}</p>
+        <h1 class="pd__hero-title font-serif">{{ p.name }}</h1>
+        <p class="pd__hero-loc">{{ p.location }}</p>
+      </div>
+    </header>
+
+    <section class="pd__overview section">
+      <div class="container">
+        <div class="pd__overview-grid">
+          <div>
+            <p class="text-kicker pd__ov-kicker">Project Overview</p>
+            <h2 class="pd__ov-title font-serif">{{ p.tagline }}</h2>
+          </div>
+          <p class="pd__ov-copy">{{ p.description }}</p>
+        </div>
+
+        <dl class="pd__facts">
+          @for (f of facts(p); track f.dt) {
+            <div class="pd__fact">
+              <dt>{{ f.dt }}</dt>
+              <dd>{{ f.dd }}</dd>
+            </div>
+          }
+        </dl>
+      </div>
+    </section>
+
+    <section class="pd__gallery section" aria-label="Project gallery">
+      <div class="container pd__gal-head">
+        <p class="text-kicker pd__gal-kicker">Gallery</p>
+        <h2 class="pd__gal-title font-serif">Inside the project</h2>
+      </div>
+      <div class="pd__gal-grid container">
+        @for (img of p.gallery; track img; let i = $index) {
+          <button
+            class="pd__gal-item"
+            [class.pd__gal-item--wide]="i % 3 === 0"
+            (click)="openLightbox(i)"
+            [attr.aria-label]="'Open image ' + (i + 1)"
+            data-cursor-hover
+          >
+            <img [src]="img" [alt]="p.name + ' — view ' + (i + 1)" loading="lazy" appImageSafe />
+            <span class="pd__gal-zoom" aria-hidden="true"><app-icon name="frame" [size]="1" /></span>
+          </button>
+        }
+      </div>
+    </section>
+
+    <section class="pd__chapters section">
+      <div class="container pd__chapters-in">
+        @for (ch of chapters; track ch.id; let i = $index) {
+          <article class="chapter" [class.chapter--flip]="i % 2 === 1">
+            <div class="chapter__media">
+              <img [src]="p.gallery[(i + 1) % p.gallery.length]" [alt]="ch.title" loading="lazy" appImageSafe />
+            </div>
+            <div class="chapter__body">
+              <span class="chapter__index font-serif">0{{ i + 1 }}</span>
+              <h2 class="chapter__title font-serif">{{ ch.title }}</h2>
+              <p class="chapter__copy">{{ ch.body(p) }}</p>
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="pd__match section--flush">
+      <div class="container pd__match-card">
+        <h2 class="pd__match-title font-serif">Build a home</h2>
+        <p class="pd__match-sub">like this.</p>
+        <a routerLink="/contact" class="btn btn--solid pd__match-cta">
+          Build A Home Like This
+          <app-icon name="arrow-right" [size]="1" class="btn__arrow" />
+        </a>
+      </div>
+    </section>
+
+    <app-estimate />
+    <app-final-cta />
+  </article>
+
+  @if (lightboxOpen()) {
+    <div
+      class="lb"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Project image view"
+      (touchstart)="onTouchStart($event)"
+      (touchend)="onTouchEnd($event)"
+      (click)="onBackdrop($event)"
+    >
+      <button class="lb__close" (click)="closeLightbox()" aria-label="Close gallery">
+        <app-icon name="close" [size]="1.3" />
+      </button>
+      <button class="lb__nav lb__nav--prev" (click)="prevImage()" aria-label="Previous image">
+        <app-icon name="arrow-right" [size]="1.2" class="lb__nav-rev" />
+      </button>
+      <figure class="lb__figure">
+        <img [src]="p.gallery[lbIndex()]" [alt]="p.name + ' — view ' + (lbIndex() + 1)" />
+        <figcaption class="lb__count font-serif">
+          {{ lbIndex() + 1 }} / {{ p.gallery.length }}
+        </figcaption>
+      </figure>
+      <button class="lb__nav lb__nav--next" (click)="nextImage()" aria-label="Next image">
+        <app-icon name="arrow-right" [size]="1.2" />
+      </button>
+    </div>
+  }
+} @else {
+  <div class="pd__missing">
+    <p class="font-serif">Project not found.</p>
+    <a routerLink="/projects" class="btn btn--ghost">Back to projects</a>
+  </div>
+}

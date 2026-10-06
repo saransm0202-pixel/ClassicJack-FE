@@ -1,0 +1,125 @@
+<section class="estimate section" id="estimate" aria-label="Request a free estimate">
+      <div class="estimate__bg">
+        <app-parallax-image [src]="SITE_IMAGES.about.main" [alt]="SITE_IMAGES.about.alt" />
+        <div class="estimate__scrim" aria-hidden="true"></div>
+      </div>
+
+      <div class="container estimate__in">
+        <div class="estimate__intro" data-reveal>
+          <p class="text-kicker estimate__kicker">Free Estimate</p>
+          <h2 class="estimate__title font-serif">
+            Let's build your<br />
+            <span class="gold">dream home.</span>
+          </h2>
+          <p class="estimate__lead">
+            Tell us about your project and our team will get back to you within one working day.
+          </p>
+          <ul class="estimate__promises">
+            <li><app-icon name="check" [size]="0.95" /> No obligation</li>
+            <li><app-icon name="check" [size]="0.95" /> Transparent, itemised estimates</li>
+            <li><app-icon name="check" [size]="0.95" /> Site visit included</li>
+          </ul>
+        </div>
+
+        <div class="estimate__card" data-reveal>
+          @if (state() !== 'success') {
+            <form
+              [formGroup]="form"
+              (ngSubmit)="onSubmit()"
+              class="form"
+              novalidate
+            >
+              <div class="form__row">
+                <div class="field" [class.field--error]="hasError('name')">
+                  <label for="name">Full Name *</label>
+                  <input id="name" type="text" formControlName="name" placeholder="Your full name" autocomplete="name" />
+                  @if (hasError('name')) {
+                    <span class="field__err">Please enter your name</span>
+                  }
+                </div>
+                <div class="field" [class.field--error]="hasError('phone')">
+                  <label for="phone">Phone Number *</label>
+                  <input id="phone" type="tel" formControlName="phone" placeholder="+91 98765 43210" autocomplete="tel" />
+                  @if (hasError('phone')) {
+                    <span class="field__err">Enter a valid phone number</span>
+                  }
+                </div>
+              </div>
+
+              <div class="field" [class.field--error]="hasError('email')">
+                <label for="email">Email Address *</label>
+                <input id="email" type="email" formControlName="email" placeholder="you@example.com" autocomplete="email" />
+                @if (hasError('email')) {
+                  <span class="field__err">Enter a valid email address</span>
+                }
+              </div>
+
+              <div class="form__row">
+                <div class="field" [class.field--error]="hasError('plotLocation')">
+                  <label for="plotLocation">Plot Location *</label>
+                  <input id="plotLocation" type="text" formControlName="plotLocation" placeholder="e.g. Chennai, OMR, Tambaram" />
+                  @if (hasError('plotLocation')) {
+                    <span class="field__err">Please enter your plot location</span>
+                  }
+                </div>
+                <div class="field">
+                  <label for="plotArea">Plot Area</label>
+                  <input id="plotArea" type="text" formControlName="plotArea" placeholder="e.g. 1200 Sq.Ft" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="package">Interested Package</label>
+                <select id="package" formControlName="package">
+                  <option value="" disabled selected>Select a package</option>
+                  @for (pkg of packages; track pkg) {
+                    <option [value]="pkg">{{ pkg }}</option>
+                  }
+                  <option value="Not Sure Yet">Not Sure Yet</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" rows="3" formControlName="message" placeholder="Tell us a little about your dream home..."></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn--solid form__submit"
+                [class.is-loading]="state() === 'loading'"
+                [disabled]="state() === 'loading'"
+                appMagnetic
+              >
+                @switch (state()) {
+                  @case ('idle') {
+                    Request Free Estimate
+                    <app-icon name="arrow-right" [size]="1" class="btn__arrow" />
+                  }
+                  @case ('loading') {
+                    Sending...
+                    <span class="form__spinner" aria-hidden="true"></span>
+                  }
+                  @case ('error') {
+                    Try Again
+                  }
+                }
+              </button>
+            </form>
+          } @else {
+            <div class="form__success" role="status">
+              <span class="form__success-mark" aria-hidden="true">
+                <app-icon name="check" [size]="1.8" />
+              </span>
+              <h3 class="form__success-title font-serif">Thank You</h3>
+              <p class="form__success-msg">
+                Your enquiry has been received. Our team will contact you shortly.
+              </p>
+              <button type="button" class="btn btn--ghost form__again" (click)="reset()">
+                Submit Another Enquiry
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    </section>

@@ -1,0 +1,26 @@
+
+    <section class="packages section" aria-label="Construction packages">
+      <div class="container">
+        <section-heading
+          kicker="Construction Packages"
+          title="Choose your"
+          titleAccent="package."
+          subtitle="Pick a construction package designed around your requirements — from functional budget builds to fully bespoke luxury homes."
+        />
+        <div class="packages__grid" data-reveal>
+          @for (p of data.packages(); track p.id) {
+            <app-package-card [pkg]="p" />
+          }
+        </div>
+        <div class="packages__foot" data-reveal>
+          <p class="packages__note">
+            Every package can be upgraded — materials, brands and finishes swap transparently before work begins.
+          </p>
+          <a routerLink="/packages" class="btn btn--ghost packages__link">
+            Compare Full Packages
+            <app-icon name="arrow-right" [size]="1" class="btn__arrow" />
+          </a>
+        </div>
+      </div>
+    </section>
+  

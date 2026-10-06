@@ -1,0 +1,35 @@
+
+      :host {
+        display: block;
+      }
+      .faq {
+        background: var(--c-bg-2);
+      }
+      .faq__in {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+        gap: clamp(2.5rem, 6vw, 5rem);
+        align-items: start;
+      }
+      .faq__side section-heading {
+        margin-bottom: 1rem;
+      }
+      .faq__note {
+        color: var(--c-muted);
+        font-size: 0.92rem;
+      }
+      .faq__link {
+        color: var(--c-accent);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .faq__list {
+        display: flex;
+        flex-direction: column;
+      }
+      @media (max-width: 1023px) {
+        .faq__in {
+          grid-template-columns: 1fr;
+        }
+      }
+    

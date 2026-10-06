@@ -1,0 +1,24 @@
+
+    <section class="faq section" aria-label="Frequently asked questions">
+      <div class="container faq__in">
+        <div class="faq__side">
+          <section-heading
+            kicker="FAQ"
+            title="Answers,"
+            titleAccent="upfront."
+            subtitle="Everything future homeowners usually ask us before we start."
+          />
+          <p class="faq__note">
+            Still curious? <a routerLink="/contact" class="faq__link">Talk to our team</a> —
+            we reply within one working day.
+          </p>
+        </div>
+
+        <div class="faq__list">
+          @for (item of data.faqs(); track item.id) {
+            <app-faq-item [item]="item" [open]="openId() === item.id" (toggle)="toggle($event)" />
+          }
+        </div>
+      </div>
+    </section>
+  

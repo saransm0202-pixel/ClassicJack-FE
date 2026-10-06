@@ -1,0 +1,26 @@
+
+    <section class="fcta" aria-label="Start your dream home">
+      <div class="fcta__bg">
+        <app-parallax-image [src]="SITE_IMAGES.cta.background" [alt]="SITE_IMAGES.cta.alt" [speed]="0.14" />
+      </div>
+      <div class="fcta__scrim" aria-hidden="true"></div>
+      <div class="fcta__scrim" aria-hidden="true"></div>
+      <div class="fcta__content container" #content>
+        <p class="text-kicker fcta__kicker" data-reveal>Begin The Journey</p>
+        <h2 class="fcta__title font-serif" data-reveal>
+          Your dream home<br />
+          <span class="fcta__accent">starts with a conversation.</span>
+        </h2>
+        <div class="fcta__actions" data-reveal>
+          <a routerLink="/contact" class="btn btn--solid">
+            Get Free Estimate
+            <app-icon name="arrow-right" [size]="1" class="btn__arrow" />
+          </a>
+          <a [href]="cfg.whatsappHref()" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
+            Chat on WhatsApp
+            <app-icon name="whatsapp" [size]="1" />
+          </a>
+        </div>
+      </div>
+    </section>
+  

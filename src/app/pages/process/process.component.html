@@ -1,0 +1,35 @@
+<page-hero
+  kicker="The Process"
+  [title]="'From Plot To Plan'"
+  subtitle="The same honest eight-step sequence on every project. You always know what happens next, who does it, and when."
+  current="Process"
+  [image]="SITE_IMAGES.process.main"
+  alt="Classic Jack construction process"
+/>
+
+<section class="proc section">
+  <div class="container">
+    <div class="proc__head">
+      <p class="text-kicker mb-xs">Inside The Method</p>
+      <h2 class="h2 font-serif">No surprises, only milestones.</h2>
+      <p class="proc__say">
+        Over 15 years we have built the same way: heavy documentation, fixed checkpoints and materials you
+        can inspect at every stage. The process below is not a brochure promise — it is the weekly operating
+        rhythm of our projects.
+      </p>
+    </div>
+
+    <div class="proc__steps">
+      @for (s of steps(); track s.id; let i = $index) {
+        <app-process-step
+          [step]="s"
+          [variant]="'vertical'"
+          [last]="i === steps().length - 1"
+        />
+      }
+    </div>
+  </div>
+</section>
+
+<app-estimate />
+<app-final-cta />

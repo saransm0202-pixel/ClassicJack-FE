@@ -1,0 +1,15 @@
+
+    <div class="loader" #loader role="status" aria-label="Loading Classic Jack Construction">
+      <div class="loader__wordmark" #wordmark>
+        <span class="loader__initial font-serif">{{ initial() }}</span>
+        <div class="loader__text">
+          <span class="loader__name font-serif">{{ name() }}</span>
+          <span class="loader__sub">{{ tagline() }}</span>
+        </div>
+      </div>
+      <div class="loader__bar" #bar>
+        <span class="loader__fill" #fill></span>
+      </div>
+      <span class="loader__progress" #progress>000</span>
+    </div>
+  

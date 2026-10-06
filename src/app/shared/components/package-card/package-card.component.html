@@ -1,0 +1,64 @@
+
+    <article
+      class="pkg"
+      [class.pkg--hot]="pkg().highlight"
+      [class.pkg--on]="active()"
+      (pointermove)="onMove($event)"
+      (pointerleave)="onLeave()"
+    >
+      <div class="pkg__glow" aria-hidden="true"></div>
+      <figure class="pkg__media" [class.pkg__media--compact]="compact()">
+        <img [src]="pkg().image" [alt]="pkg().name + ' construction package'" loading="lazy" appImageSafe />
+        @if (pkg().highlight) {
+          <div class="pkg__badge">Most Chosen</div>
+        }
+      </figure>
+      <div class="pkg__body">
+        <div class="pkg__head">
+          <div>
+            <p class="pkg__name font-serif">{{ pkg().name }}</p>
+            <p class="pkg__tagline">{{ pkg().tagline }}</p>
+          </div>
+          <div class="pkg__price">
+            <span class="pkg__cur">&#8377;</span>
+            <span class="pkg__val">{{ pkg().pricePerSqft.toLocaleString('en-IN') }}</span>
+            <span class="pkg__unit">/ SQ.FT</span>
+          </div>
+        </div>
+        @if (!compact()) {
+          <p class="pkg__desc">{{ pkg().description }}</p>
+        }
+        <ul class="pkg__feats">
+          @for (f of (compact() ? pkg().features.slice(0, 4) : pkg().features); track f) {
+            <li>
+              <app-icon name="check" [size]="0.85" />
+              <span>{{ f }}</span>
+            </li>
+          }
+        </ul>
+        <div class="pkg__foot">
+          <span class="pkg__time">
+            <app-icon name="clock" [size]="0.9" />
+            {{ pkg().deliveredIn }}
+          </span>
+          <div class="pkg__links">
+            <a [routerLink]="['/estimate']" [queryParams]="{ pkg: pkg().id }" class="pkg__cta">
+              Get Estimate
+              <app-icon name="arrow-right" [size]="0.9" />
+            </a>
+            @if (compact()) {
+              <a [routerLink]="['/packages']" class="pkg__cta pkg__cta--ghost">
+                View Details
+                <app-icon name="arrow-right" [size]="0.9" />
+              </a>
+            } @else {
+              <a [href]="cfg.whatsappHref()" target="_blank" rel="noopener noreferrer" class="pkg__cta pkg__cta--ghost">
+                Talk to our team
+                <app-icon name="arrow-right" [size]="0.9" />
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+    </article>
+  

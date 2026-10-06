@@ -1,0 +1,61 @@
+
+      :host {
+        display: block;
+        position: relative;
+      }
+      .fcta {
+        position: relative;
+        min-height: 88svh;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+      .fcta__bg {
+        position: absolute;
+        inset: 0;
+      }
+      .fcta__bg img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .fcta__scrim {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse at 62% 50%, rgba(11, 11, 10, 0.35), transparent 60%),
+          linear-gradient(180deg, rgba(11, 11, 10, 0.65), rgba(11, 11, 10, 0.82));
+      }
+      .fcta__content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.6rem;
+        padding-block: 5rem;
+      }
+      .fcta__kicker {
+        letter-spacing: 0.4em;
+      }
+      .fcta__title {
+        font-size: clamp(2.4rem, 7vw, 5rem);
+        text-transform: uppercase;
+        line-height: 1.06;
+      }
+      .fcta__accent {
+        color: transparent;
+        -webkit-text-stroke: 1px var(--c-accent);
+        font-style: italic;
+      }
+      .fcta__actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 0.8rem;
+      }
+    

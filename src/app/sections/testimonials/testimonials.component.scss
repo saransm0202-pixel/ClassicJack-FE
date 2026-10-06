@@ -1,0 +1,116 @@
+
+      :host {
+        display: block;
+      }
+      .tst {
+        background: var(--c-bg);
+      }
+      .tst__head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 2rem;
+      }
+      .tst__controls {
+        display: flex;
+        gap: 0.8rem;
+        margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+      }
+      .tst__nav {
+        width: 52px;
+        height: 52px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--c-line-strong);
+        border-radius: 50%;
+        color: var(--c-light);
+        transition: border-color var(--dur-1), color var(--dur-1), background var(--dur-1);
+      }
+      .tst__nav:hover {
+        border-color: var(--c-accent-line);
+        color: var(--c-accent);
+        background: var(--c-accent-soft);
+      }
+      .tst__nav-rev {
+        transform: rotate(180deg);
+      }
+      .tst__viewport {
+        overflow: hidden;
+      }
+      .tst__track {
+        display: flex;
+        transition: transform 0.9s var(--ease-luxe);
+        will-change: transform;
+      }
+      .tst__slide {
+        flex: 0 0 100%;
+        padding: 0 var(--gutter);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.6rem;
+        max-width: 1300px;
+        margin-inline: auto;
+      }
+      .tst__mark {
+        font-size: 5rem;
+        line-height: 0.4;
+        color: var(--c-accent);
+        opacity: 0.8;
+      }
+      .tst__quote {
+        font-size: clamp(1.3rem, 3vw, 2rem);
+        font-weight: 500;
+        max-width: 30ch;
+        line-height: 1.35;
+      }
+      .tst__stars {
+        display: flex;
+        gap: 0.2rem;
+        font-size: 1.05rem;
+      }
+      .tst__star {
+        color: var(--c-line-strong);
+      }
+      .tst__star.on {
+        color: var(--c-accent);
+      }
+      .tst__author cite {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        font-style: normal;
+      }
+      .tst__name {
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+      .tst__meta {
+        font-size: 0.82rem;
+        color: var(--c-muted);
+      }
+      .tst__pips {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 2.4rem;
+      }
+      .tst__pip {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--c-line-strong);
+        transition: background var(--dur-1), transform var(--dur-1);
+      }
+      .tst__pip.on {
+        background: var(--c-accent);
+        transform: scale(1.35);
+      }
+      @media (max-width: 767px) {
+        .tst__head {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    

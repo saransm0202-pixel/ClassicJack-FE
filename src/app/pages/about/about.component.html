@@ -1,0 +1,125 @@
+
+    <page-hero
+      kicker="Since 2015 · Chennai"
+      [title]="'About Classic Jack'"
+      subtitle="An end-to-end construction company built on transparency, craftsmanship and trust."
+      current="About"
+      [image]="SITE_IMAGES.about.main"
+      alt="About Classic Jack Construction"
+    />
+
+    <section class="story section container">
+      <div class="story__grid">
+        <div class="story__text">
+          <p class="text-kicker story__kicker">Our Story</p>
+          <h2 class="story__title font-serif">
+            Built on a handshake.<br />
+            <span class="gold">Finished with an oath.</span>
+          </h2>
+          <p class="story__copy">
+            Classic Jack Construction began with a single 1,100 sq.ft home in Vandalur — and a
+            promise that the family would always know what was being built, why, and at what cost.
+            A decade later, that promise has carried us through 150+ homes across Chennai,
+            Chengalpattu and beyond.
+          </p>
+          <p class="story__copy">
+            We are not a brokerage of subcontractors. Every project carries a dedicated project
+            manager, a documented quality checklist and a payment schedule tied to real milestones —
+            not schedules.
+          </p>
+        </div>
+        <div class="story__media">
+          <app-blueprint-reveal
+            [image]="SITE_IMAGES.blueprint.lines"
+            alt="Architectural blueprint of a Classic Jack home"
+            label="Every home begins on paper"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="values section">
+      <div class="container">
+        <section-heading
+          kicker="What We Stand For"
+          title="Values that"
+          titleAccent="frame our work."
+          align="center"
+        />
+        <div class="values__grid">
+          @for (v of values; track v.title) {
+            <article class="value">
+              <span class="value__n font-serif">{{ v.n }}</span>
+              <h3 class="value__title font-serif">{{ v.title }}</h3>
+              <p class="value__desc">{{ v.desc }}</p>
+            </article>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="services section">
+      <div class="container">
+        <section-heading
+          kicker="Capabilities"
+          title="Everything under"
+          titleAccent="one roof."
+          subtitle="From approvals to interiors, you manage one contract — not a dozen vendors."
+        />
+        <div class="services__grid">
+          @for (s of data.services(); track s.id) {
+            <article class="service">
+              <app-icon [name]="s.icon" [size]="1.5" class="service__ic" />
+              <h3 class="service__title font-serif">{{ s.title }}</h3>
+              <p class="service__desc">{{ s.description }}</p>
+              <a routerLink="/contact" class="service__cta">
+                Enquire
+                <app-icon name="arrow-right" [size]="0.85" />
+              </a>
+            </article>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="numbers section--flush container">
+      <div class="numbers__band">
+        @for (n of numbers; track n.label) {
+          <div class="number">
+            <span class="number__value font-serif">
+              <app-counter [value]="n.value" [suffix]="n.suffix" />
+            </span>
+            <span class="number__label">{{ n.label }}</span>
+          </div>
+        }
+      </div>
+    </section>
+
+    <app-why-choose-us />
+
+    <section class="leadership section">
+      <div class="container leadership__in">
+        <div class="leadership__copy">
+          <p class="text-kicker leadership__kicker">The People</p>
+          <h2 class="leadership__title font-serif">
+            A team that treats<br />
+            <span class="gold">your home like their own.</span>
+          </h2>
+          <p class="leadership__desc">
+            Our in-house team of architects, civil engineers, site supervisors and finishing
+            specialists is led by {{ cfg.brandShort() }}'s founding engineers — on site every week,
+            not just on paper.
+          </p>
+          <a routerLink="/contact" class="btn btn--solid leadership__cta">
+            Meet The Team
+            <app-icon name="arrow-right" [size]="1" class="btn__arrow" />
+          </a>
+        </div>
+        <div class="leadership__media">
+          <img [src]="SITE_IMAGES.about.stacked" alt="Site supervision by Classic Jack engineers" loading="lazy" appImageSafe />
+        </div>
+      </div>
+    </section>
+
+    <app-final-cta />
+  

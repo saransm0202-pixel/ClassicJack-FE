@@ -1,0 +1,36 @@
+<div
+  class="pc"
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="'View project: ' + project().name"
+  (click)="openViewer()"
+  (keydown.enter)="openViewer()"
+  (keydown.space)="$event.preventDefault(); openViewer()"
+>
+  <figure class="pc__media">
+    <img
+      [src]="project().image"
+      [alt]="project().name"
+      loading="lazy"
+      appImageSafe
+    />
+    <div class="pc__scrim" aria-hidden="true"></div>
+    <div class="pc__meta">
+      <span class="pc__status" [class.pc__status--live]="project().isLive">
+        {{ project().status }}
+      </span>
+      @if (areaLabel()) {
+        <span class="pc__area">{{ areaLabel() }}</span>
+      }
+    </div>
+    <div class="pc__copy">
+      <p class="pc__type text-kicker">{{ project().type }}</p>
+      <h3 class="pc__title font-serif">{{ project().name }}</h3>
+      <p class="pc__location">{{ project().location }}</p>
+      <span class="pc__link">
+        View Project
+        <app-icon name="arrow-right" [size]="0.9" class="pc__arrow" />
+      </span>
+    </div>
+  </figure>
+</div>

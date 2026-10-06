@@ -1,0 +1,58 @@
+
+      :host {
+        position: fixed;
+        right: 1.4rem;
+        bottom: 1.4rem;
+        z-index: var(--z-header);
+      }
+      .wa {
+        position: relative;
+        display: grid;
+        place-items: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        color: #fff;
+        background: #25d366;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+        transition: transform var(--dur-1) var(--ease-luxe), box-shadow var(--dur-1) var(--ease-luxe);
+      }
+      .wa:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 44px rgba(0, 0, 0, 0.5);
+      }
+      .wa::before {
+        content: attr(data-tooltip);
+        position: absolute;
+        right: calc(100% + 12px);
+        top: 50%;
+        transform: translateY(-50%) translateX(6px);
+        white-space: nowrap;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        color: var(--c-light);
+        background: var(--c-surface);
+        border: 1px solid var(--c-line);
+        padding: 0.45rem 0.8rem;
+        border-radius: 4px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--dur-1) var(--ease-luxe), transform var(--dur-1) var(--ease-luxe);
+      }
+      .wa:hover::before {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+      @media (pointer: coarse) {
+        .wa::before {
+          display: none;
+        }
+      }
+      @media (max-width: 767px) {
+        :host {
+          right: 1rem;
+          bottom: 1rem;
+        }
+      }
+    

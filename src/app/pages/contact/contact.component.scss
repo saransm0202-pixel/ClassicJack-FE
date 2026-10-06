@@ -1,0 +1,87 @@
+
+      :host {
+        display: block;
+      }
+      .con__grid {
+        display: grid;
+        grid-template-columns: minmax(0, min(72ch, 100%));
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: start;
+        margin-bottom: clamp(3rem, 6vw, 5rem);
+      }
+      .con__say p {
+        color: var(--c-muted);
+        line-height: 1.75;
+        max-width: 48ch;
+        margin-bottom: 1.2rem;
+      }
+      .con__detail {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.3rem;
+      }
+      .con__detail app-icon {
+        color: var(--c-accent);
+        margin-top: 0.2rem;
+        flex: none;
+      }
+      .con__detail-label {
+        font-size: 0.66rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--c-muted);
+        margin-bottom: 0.2rem;
+      }
+      .con__detail-val {
+        font-size: 0.98rem;
+      }
+      .con__detail-val a {
+        color: var(--c-light);
+        text-decoration: none;
+      }
+      .con__detail-val a:hover {
+        color: var(--c-accent);
+      }
+      .con__map {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border: 1px solid var(--c-line);
+        border-radius: var(--radius-m);
+        background: var(--c-bg-2);
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+        margin-top: 1.5rem;
+      }
+      .con__map-fallback {
+        font-size: 0.82rem;
+        color: var(--c-muted);
+        text-align: center;
+        line-height: 1.6;
+      }
+      .con__whats {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: #25D366;
+        font-size: 0.98rem;
+        font-weight: 500;
+        margin-top: 0.6rem;
+        text-decoration: none;
+      }
+      .con__whats:hover {
+        opacity: 0.8;
+      }
+      .con__hours {
+        margin-top: 0.6rem;
+        font-size: 0.82rem;
+        color: var(--c-muted);
+      }
+      @media (max-width: 840px) {
+        .con__grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    

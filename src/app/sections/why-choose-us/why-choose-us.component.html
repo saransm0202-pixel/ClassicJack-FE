@@ -1,0 +1,30 @@
+
+    <section class="why" aria-label="Why choose Classic Jack">
+      <div class="why__bg">
+        <app-parallax-image [src]="SITE_IMAGES.blueprint.lines" alt="Architectural blueprint background" />
+        <div class="why__scrim" aria-hidden="true"></div>
+      </div>
+
+      <div class="container why__head">
+        <section-heading
+          kicker="The Classic Jack Difference"
+          title="Why"
+          titleAccent="Classic Jack?"
+          subtitle="Eight disciplines we hold ourselves to on every single project."
+        />
+      </div>
+
+      <div class="why__viewport" #viewport>
+        <div class="why__track">
+          @for (f of data.features(); track f.id) {
+            <article class="why__card">
+              <span class="why__index font-serif">{{ f.index }}</span>
+              <app-icon [name]="iconOf(f.icon)" [size]="1.4" class="why__ic" />
+              <h3 class="why__title font-serif">{{ f.title }}</h3>
+              <p class="why__desc">{{ f.description }}</p>
+            </article>
+          }
+        </div>
+      </div>
+    </section>
+  

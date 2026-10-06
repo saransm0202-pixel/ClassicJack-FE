@@ -1,0 +1,174 @@
+
+      :host {
+        display: block;
+      }
+      .story__grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: clamp(3rem, 6vw, 5rem);
+        align-items: center;
+      }
+      .story__kicker {
+        margin-bottom: 1.2rem;
+      }
+      .story__title {
+        font-size: var(--fs-h2);
+        margin-bottom: 1.4rem;
+      }
+      .story__copy {
+        color: var(--c-muted);
+        margin-bottom: 1.2rem;
+        max-width: 56ch;
+      }
+      .story__media app-blueprint-reveal {
+        min-height: 460px;
+        display: block;
+      }
+
+      .values {
+        background: var(--c-bg-2);
+      }
+      .values__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.3rem;
+      }
+      .value {
+        position: relative;
+        padding: 2rem 1.8rem;
+        border: 1px solid var(--c-line);
+        border-radius: var(--radius-m);
+        background: linear-gradient(180deg, var(--c-surface), var(--c-bg));
+        transition: border-color var(--dur-1) var(--ease-luxe), transform var(--dur-1) var(--ease-luxe);
+      }
+      .value:hover {
+        border-color: var(--c-accent-line);
+        transform: translateY(-4px);
+      }
+      .value__n {
+        position: absolute;
+        top: 1.3rem;
+        right: 1.5rem;
+        font-size: 0.95rem;
+        color: var(--c-accent);
+      }
+      .value__title {
+        font-size: 1.4rem;
+        margin-bottom: 0.6rem;
+      }
+      .value__desc {
+        color: var(--c-muted);
+        font-size: 0.9rem;
+      }
+
+      .services__grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1.3rem;
+      }
+      .service {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        padding: 1.8rem 1.5rem;
+        border: 1px solid var(--c-line);
+        border-radius: var(--radius-m);
+      }
+      .service__ic {
+        color: var(--c-accent);
+      }
+      .service__title {
+        font-size: 1.25rem;
+      }
+      .service__desc {
+        color: var(--c-muted);
+        font-size: 0.86rem;
+        flex: 1;
+      }
+      .service__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--c-accent);
+      }
+
+      .numbers__band {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border: 1px solid var(--c-line);
+      }
+      .number {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 2.4rem 1.6rem;
+        border-right: 1px solid var(--c-line);
+        text-align: center;
+      }
+      .number:last-child {
+        border-right: 0;
+      }
+      .number__value {
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
+      }
+      .number__label {
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--c-muted);
+      }
+
+      .leadership__in {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: clamp(3rem, 6vw, 5rem);
+        align-items: center;
+      }
+      .leadership__kicker {
+        margin-bottom: 1.1rem;
+      }
+      .leadership__title {
+        font-size: var(--fs-h2);
+        margin-bottom: 1.2rem;
+      }
+      .leadership__desc {
+        color: var(--c-muted);
+        margin-bottom: 2rem;
+        max-width: 48ch;
+      }
+      .leadership__media img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: var(--radius-m);
+      }
+
+      @media (max-width: 1023px) {
+        .story__grid,
+        .leadership__in {
+          grid-template-columns: 1fr;
+        }
+        .values__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .services__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .numbers__band {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .values__grid,
+        .services__grid {
+          grid-template-columns: 1fr;
+        }
+        .number:nth-child(2) {
+          border-right: 0;
+        }
+      }
+    

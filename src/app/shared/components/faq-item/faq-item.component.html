@@ -1,0 +1,27 @@
+
+    <div class="fi" [class.fi--open]="open()">
+      <button
+        class="fi__trigger"
+        [attr.aria-expanded]="open()"
+        [attr.aria-controls]="'faq-panel-' + item().id"
+        [id]="'faq-button-' + item().id"
+        (click)="toggle.emit(item().id)"
+      >
+        <span class="fi__num">{{ item().id.toString().padStart(2, '0') }}</span>
+        <span class="fi__q">{{ item().question }}</span>
+        <span class="fi__plus" aria-hidden="true">
+          <app-icon name="plus" [size]="0.95" />
+        </span>
+      </button>
+      <div
+        class="fi__panel"
+        [id]="'faq-panel-' + item().id"
+        role="region"
+        [attr.aria-labelledby]="'faq-button-' + item().id"
+      >
+        <div class="fi__inner">
+          <p>{{ item().answer }}</p>
+        </div>
+      </div>
+    </div>
+  

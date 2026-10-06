@@ -1,0 +1,28 @@
+
+    <section class="proc section" aria-label="Our construction process">
+      <div class="container proc__head">
+        <section-heading
+          kicker="Our Process"
+          title="Your home."
+          titleAccent="From idea to key."
+          subtitle="A disciplined eight-stage journey — so the only surprise at handover is how smooth it felt."
+        />
+        <a routerLink="/process" class="btn btn--ghost proc__about-link">
+          See The Full Process
+          <app-icon name="arrow-right" [size]="1" class="btn__arrow" />
+        </a>
+      </div>
+
+      <div class="proc__viewport" #viewport>
+        <div class="proc__track">
+          @for (s of data.processSteps(); track s.id; let i = $index) {
+            <div class="proc__step">
+              <app-process-step [step]="s" variant="card" [last]="i === data.processSteps().length - 1" />
+            </div>
+          }
+        </div>
+        <div class="proc__gradient proc__gradient--l" aria-hidden="true"></div>
+        <div class="proc__gradient proc__gradient--r" aria-hidden="true"></div>
+      </div>
+    </section>
+  

@@ -1,0 +1,19 @@
+
+    <div class="sh" [class.sh--center]="align() === 'center'" [attr.data-reveal]="true">
+      @if (kicker()) {
+        <p class="sh__kicker text-kicker">{{ kicker() }}</p>
+      }
+      @if (title()) {
+        <h2 class="sh__title font-serif">
+          {{ title() }}
+          @if (titleAccent()) {
+            <span class="sh__accent">{{ titleAccent() }}</span>
+          }
+        </h2>
+      }
+      @if (subtitle()) {
+        <p class="sh__subtitle">{{ subtitle() }}</p>
+      }
+      <ng-content select="[slot]" />
+    </div>
+  

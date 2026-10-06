@@ -1,0 +1,48 @@
+
+    <section class="tst section" aria-label="Client testimonials">
+      <div class="container">
+        <div class="tst__head">
+          <section-heading kicker="Testimonials" title="What our" titleAccent="clients say." />
+          <div class="tst__controls">
+            <button class="tst__nav" (click)="prev()" aria-label="Previous testimonial">
+              <app-icon name="arrow-right" [size]="1" class="tst__nav-rev" />
+            </button>
+            <button class="tst__nav" (click)="next()" aria-label="Next testimonial">
+              <app-icon name="arrow-right" [size]="1" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tst__viewport" #viewport>
+        <div
+          class="tst__track"
+          [style.transform]="'translateX(-' + index() * 100 + '%)'"
+        >
+          @for (t of data.testimonials(); track t.id) {
+            <blockquote class="tst__slide">
+              <span class="tst__mark font-serif" aria-hidden="true">"</span>
+              <p class="tst__quote font-serif">{{ t.quote }}</p>
+              <footer class="tst__author">
+                <div class="tst__stars" aria-label="{{ t.rating }} out of 5 stars">
+                  @for (n of starValues; track n) {
+                    <span class="{{ n <= t.rating ? 'on' : '' }} tst__star" aria-hidden="true">★</span>
+                  }
+                </div>
+                <cite>
+                  <span class="tst__name">{{ t.name }}</span>
+                  <span class="tst__meta">{{ t.project }} · {{ t.location }}</span>
+                </cite>
+              </footer>
+            </blockquote>
+          }
+        </div>
+      </div>
+
+      <div class="container tst__pips" aria-hidden="true">
+        @for (t of data.testimonials(); track t.id; let i = $index) {
+          <button class="tst__pip" [class.on]="i === index()" (click)="goTo(i)"></button>
+        }
+      </div>
+    </section>
+  

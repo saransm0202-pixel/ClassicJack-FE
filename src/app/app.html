@@ -1,0 +1,31 @@
+@if (!isAdmin) {
+  <div class="grain" aria-hidden="true"></div>
+}
+
+<app-page-loader (done)="onLoaderDone()" />
+
+@if (!isAdmin) {
+  <app-scroll-progress />
+}
+
+<app-site-header />
+
+<main id="main-content" class="app-main" [class.app-main--console]="isAdmin">
+  <router-outlet />
+</main>
+
+@if (!isAdmin) {
+  <app-site-footer />
+}
+
+@if (!isAdmin) {
+  <app-whatsapp-button />
+}
+
+@if (!isAdmin) {
+  <app-back-to-top />
+}
+
+<app-project-viewer />
+
+<app-notification />

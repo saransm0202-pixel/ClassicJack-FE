@@ -1,0 +1,66 @@
+
+    <page-hero
+      kicker="Portfolio"
+      [title]="'Our Work'"
+      subtitle="Every project below followed the same discipline: documented milestones, approved materials and a client who knew exactly what was happening next."
+      current="Projects"
+      [image]="SITE_IMAGES.hero.main"
+      alt="Classic Jack construction portfolio"
+    />
+
+    <section class="proj section">
+      <div class="container">
+        <div class="proj__filters" role="group" aria-label="Filter projects">
+          <div class="proj__filter-group">
+            <span class="proj__filter-label">Type</span>
+            <div class="proj__chips">
+              @for (t of types(); track t) {
+                <button
+                  class="chip"
+                  [class.on]="typeFilter() === t"
+                  (click)="setType(t)"
+                  [attr.aria-pressed]="typeFilter() === t"
+                >
+                  {{ t }}
+                </button>
+              }
+            </div>
+          </div>
+          <div class="proj__filter-group">
+            <span class="proj__filter-label">Status</span>
+            <div class="proj__chips">
+              @for (s of statuses(); track s) {
+                <button
+                  class="chip"
+                  [class.on]="statusFilter() === s"
+                  (click)="setStatus(s)"
+                  [attr.aria-pressed]="statusFilter() === s"
+                >
+                  {{ s }}
+                </button>
+              }
+            </div>
+          </div>
+          <span class="proj__count">
+            {{ filtered().length }} project{{ filtered().length === 1 ? '' : 's' }}
+          </span>
+        </div>
+
+        <div class="proj__grid">
+          @for (p of filtered(); track p.id) {
+            <app-project-card [project]="p" />
+          } @empty {
+            @if (catalog.loading()) {
+              <div class="proj__empty">Loading projects…</div>
+            } @else {
+              <div class="proj__empty">
+                No projects match this filter — try another combination.
+              </div>
+            }
+          }
+        </div>
+      </div>
+    </section>
+
+    <app-final-cta />
+  

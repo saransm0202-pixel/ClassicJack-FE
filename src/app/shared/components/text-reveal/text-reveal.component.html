@@ -1,0 +1,9 @@
+
+    <span class="tr" aria-label="{{ text() }}">
+      @for (w of words(); track $index) {
+        <span class="tr__mask" aria-hidden="true">
+          <span class="tr__word">{{ w }}&nbsp;</span>
+        </span>
+      }
+    </span>
+  

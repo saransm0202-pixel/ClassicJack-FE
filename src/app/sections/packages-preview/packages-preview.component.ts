@@ -1,0 +1,41 @@
+import { Component, inject, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { SiteDataService } from '../../core/services/site-data.service';
+import { PackageCardComponent } from '../../shared/components/package-card/package-card.component';
+import { SectionHeadingComponent } from '../../shared/components/section-heading/section-heading.component';
+import { IconComponent } from '../../shared/components/icon/icon.component';
+import { gsap, ScrollTrigger } from '../../core/utils/gsap.util';
+
+@Component({
+  selector: 'app-packages-preview',
+  standalone: true,
+  imports: [PackageCardComponent, SectionHeadingComponent, RouterLink, IconComponent],
+  templateUrl: './packages-preview.component.html',
+  styleUrl: './packages-preview.component.scss',
+})
+export class PackagesPreviewComponent implements AfterViewInit, OnDestroy {
+  protected readonly data = inject(SiteDataService);
+
+  private el = inject(ElementRef<HTMLElement>);
+  private trigger?: ScrollTrigger[];
+
+  ngAfterViewInit(): void {
+    const root = this.el.nativeElement;
+    const items = root.querySelectorAll('[data-reveal]');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.set(items, { opacity: 1, y: 0 });
+      return;
+    }
+    gsap.set(items, { opacity: 0, y: 34 });
+    this.trigger = ScrollTrigger.batch(items, {
+      start: 'top 88%',
+      once: true,
+      onEnter: (batch: Element[]) =>
+        gsap.to(batch, { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: 'power3.out' }),
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.trigger?.forEach((t) => t.kill(true));
+  }
+}

@@ -1,0 +1,20 @@
+
+      :host {
+        display: block;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      .px {
+        position: absolute;
+        inset: -18% 0;
+        margin: 0;
+      }
+      .px img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        will-change: transform;
+      }
+    

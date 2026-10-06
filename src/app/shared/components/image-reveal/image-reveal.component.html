@@ -1,0 +1,11 @@
+
+    <figure class="ir">
+      <img
+        [src]="src()"
+        [alt]="alt()"
+        [attr.loading]="priority() ? 'eager' : 'lazy'"
+        [attr.fetchpriority]="priority() ? 'high' : null"
+        appImageSafe
+      />
+    </figure>
+  

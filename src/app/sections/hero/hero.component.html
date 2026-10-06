@@ -1,0 +1,57 @@
+
+    <section class="hero" id="top" aria-label="Hero">
+      <div class="hero__bg" #bg>
+        <div class="hero__img" #img>
+          <img
+            [src]="SITE_IMAGES.hero.main"
+            [alt]="SITE_IMAGES.hero.alt"
+            fetchpriority="high"
+            appImageSafe
+          />
+        </div>
+        <div class="hero__scrim" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero__content container" #content>
+        <p class="hero__kicker text-kicker" data-hero>PREMIUM HOME CONSTRUCTION</p>
+
+        <h1 class="hero__title font-serif">
+          <span class="hero__line" data-hero>
+            @for (w of lineOne; track $index) {
+              <span class="hero__mask" aria-hidden="true"><span class="hero__word">{{ w }}</span>&nbsp;</span>
+            }
+          </span>
+          <span class="hero__line" data-hero>
+            @for (w of lineTwo; track $index) {
+              <span class="hero__mask" aria-hidden="true"><span class="hero__word">{{ w }}</span>&nbsp;</span>
+            }
+          </span>
+          <span class="hero__line hero__line--accent" data-hero>
+            @for (w of lineAccent; track $index) {
+              <span class="hero__mask" aria-hidden="true"><span class="hero__word">{{ w }}</span>&nbsp;</span>
+            }
+          </span>
+        </h1>
+
+        <p class="hero__sub" data-hero>
+          From architectural planning to the final handover, Classic Jack Construction delivers
+          thoughtfully designed homes with precision, transparency and craftsmanship.
+        </p>
+
+        <div class="hero__cta" data-hero>
+          <a routerLink="/contact" class="btn btn--solid">
+            Start Your Project
+            <app-icon name="arrow-right" [size]="1" class="btn__arrow" />
+          </a>
+          <a routerLink="/projects" class="btn btn--ghost">Explore Our Work</a>
+        </div>
+      </div>
+
+      <div class="hero__scroll" data-hero aria-hidden="true">
+        <span class="hero__scroll-label">Scroll to explore</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+
+      <span class="hero__index font-serif" data-hero aria-hidden="true">01 / 05</span>
+    </section>
+  

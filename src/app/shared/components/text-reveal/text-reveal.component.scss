@@ -1,0 +1,15 @@
+
+      :host {
+        display: inline;
+      }
+      .tr__mask {
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: bottom;
+      }
+      .tr__word {
+        display: inline-block;
+        transform: translateY(115%);
+        will-change: transform;
+      }
+    

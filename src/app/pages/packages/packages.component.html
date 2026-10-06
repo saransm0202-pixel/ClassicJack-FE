@@ -1,0 +1,73 @@
+<page-hero
+  kicker="Packages & Pricing"
+  [title]="'Invest With Clarity'"
+  subtitle="No hidden line items, no surprise bills. Four transparent packages that spell out exactly what you are paying for — before the first brick is laid."
+  current="Packages"
+  [image]="SITE_IMAGES.packages.luxury"
+  alt="Classic Jack construction packages"
+/>
+
+<section class="pack section">
+  <div class="container">
+    <div class="pack__intro">
+      <div class="pack__intro-copy">
+        <p class="text-kicker mb-xs">Transparent Pricing</p>
+        <h2 class="h2 font-serif">Same discipline. Your choice of finish.</h2>
+      </div>
+      <div class="pack__disclaimer">
+        <app-icon name="info" [size]="1.1" />
+        <p>{{ COST_DISCLAIMER }}</p>
+      </div>
+    </div>
+
+    <div class="pack__cards">
+      @for (p of pkgs(); track p.id; let i = $index) {
+        <app-package-card
+          [pkg]="p"
+          [compact]="false"
+          [active]="active() === i"
+        />
+      }
+    </div>
+
+    <div class="pack__table-wrap">
+      <table class="pack__table">
+        <caption class="sr-only">Detailed comparison of Classic Jack construction packages</caption>
+        <thead>
+          <tr>
+            <th scope="col">Included scope</th>
+            @for (p of pkgs(); track p.id) {
+              <th scope="col" [class.hl]="p.highlight">
+                {{ p.name }}
+                <span class="pk-per">₹ {{ p.pricePerSqft.toLocaleString('en-IN') }}/sq.ft</span>
+              </th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (r of rows; track r.key) {
+            <tr>
+              <th scope="row">{{ r.label }}</th>
+              @for (c of cols; track c) {
+                <td [class.pk-b]="r.key === 'warranty'" [class.pk-hl]="active() === c">{{ cell(pkgs()[c], r.key) }}</td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pack__foot">
+      <p class="pack__foot-note">
+        Final estimate depends on exact built-up area, plot conditions and finish upgrades. We document every
+        stage in writing so your investment stays fully transparent.
+      </p>
+      <a class="btn btn--solid" [href]="cfg.whatsappHref()" target="_blank" rel="noopener">
+        Compare With Our Team
+        <app-icon name="arrow-right" [size]="1" class="btn__arrow" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<app-final-cta />

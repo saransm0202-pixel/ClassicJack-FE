@@ -1,0 +1,20 @@
+
+    <section class="page-hero" aria-label="{{ title() }}">
+      <div class="page-hero__bg">
+        <img [src]="image()" [alt]="alt()" appImageSafe />
+        <div class="page-hero__scrim" aria-hidden="true"></div>
+      </div>
+      <div class="container page-hero__content">
+        <p class="page-hero__kicker text-kicker" data-ph>{{ kicker() }}</p>
+        <h1 class="page-hero__title font-serif" data-ph>{{ title() }}</h1>
+        @if (subtitle()) {
+          <p class="page-hero__subtitle" data-ph>{{ subtitle() }}</p>
+        }
+        <nav class="page-hero__breadcrumb" data-ph aria-label="Breadcrumb">
+          <a routerLink="/" class="page-hero__crumb">Home</a>
+          <span aria-hidden="true" class="page-hero__sep">/</span>
+          <span class="page-hero__crumb page-hero__crumb--current">{{ current() }}</span>
+        </nav>
+      </div>
+    </section>
+  

@@ -1,0 +1,53 @@
+@if (viewer.open() && viewer.project(); as p) {
+  <div class="pcv" role="presentation" (click)="onBackdrop($event)">
+    <div class="pcv__dialog" role="dialog" aria-modal="true" aria-label="Project view: {{ p.name }}">
+      <button class="pcv__close" (click)="close()" aria-label="Close project view">
+        <app-icon name="close" [size]="1.1" />
+      </button>
+
+      <div class="pcv__media">
+        <img [src]="p.image" [alt]="p.name" appImageSafe />
+      </div>
+
+      <div class="pcv__bar">
+        <div class="pcv__tags">
+          <span class="pcv__status" [class.pcv__status--live]="p.isLive">{{ p.status }}</span>
+          @if (p.type) {
+            <span class="pcv__type">{{ p.type }}</span>
+          }
+        </div>
+        <div class="pcv__head">
+          <div class="pcv__head-copy">
+            <h2 class="pcv__title font-serif">{{ p.name }}</h2>
+            <p class="pcv__loc">{{ p.location }}</p>
+          </div>
+          <dl class="pcv__facts">
+            @if (areaLabel()) {
+              <div class="pcv__fact">
+                <dt>Built-up Area</dt>
+                <dd>{{ areaLabel() }}</dd>
+              </div>
+            }
+            <div class="pcv__fact">
+              <dt>Status</dt>
+              <dd>{{ p.status }}</dd>
+            </div>
+          </dl>
+        </div>
+        @if (p.description) {
+          <p class="pcv__desc">{{ p.description }}</p>
+        }
+        <div class="pcv__actions">
+          <a routerLink="/estimate" class="btn btn--solid pcv__cta" (click)="close()">
+            Get Free Estimate
+            <app-icon name="arrow-right" [size]="1" class="btn__arrow" />
+          </a>
+          <a [href]="cfg.whatsappHref()" target="_blank" rel="noopener noreferrer" class="btn btn--ghost pcv__cta" (click)="close()">
+            Talk to our team
+            <app-icon name="whatsapp" [size]="1" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+}

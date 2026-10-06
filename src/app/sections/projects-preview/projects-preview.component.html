@@ -1,0 +1,31 @@
+
+    <section class="work section" aria-label="Featured projects">
+      <div class="container">
+        <section-heading
+          kicker="Our Work"
+          title="Spaces"
+          titleAccent="we've built."
+          subtitle="A selection of residences completed across Chennai and its surroundings — each one engineered for a lifetime."
+        />
+      </div>
+
+      <div class="container work__grid">
+        @for (p of featured(); track p.id) {
+          <div class="work__item" [attr.data-reveal]="true">
+            <app-project-card [project]="p" />
+          </div>
+        } @empty {
+          <div class="work__empty" data-reveal>
+            <p>Our newest projects are being prepared — check back soon.</p>
+          </div>
+        }
+      </div>
+
+      <div class="container work__foot" data-reveal>
+        <a routerLink="/projects" class="btn btn--ghost">
+          View All Projects
+          <app-icon name="arrow-right" [size]="1" class="btn__arrow" />
+        </a>
+      </div>
+    </section>
+  

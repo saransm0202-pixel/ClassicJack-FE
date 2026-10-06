@@ -1,0 +1,33 @@
+
+    @if (href()) {
+      <a
+        appMagnetic
+        [href]="href()"
+        [attr.target]="external() ? '_blank' : null"
+        [attr.rel]="external() ? 'noopener noreferrer' : null"
+        class="btn mag-btn"
+        [class.btn--solid]="variant() === 'solid'"
+        [class.btn--ghost]="variant() === 'ghost'"
+        [class.btn--light]="variant() === 'light'"
+      >
+        @if (icon()) {
+          <app-icon [name]="icon()" [size]="1" />
+        }
+        <ng-content />
+      </a>
+    } @else {
+      <a
+        appMagnetic
+        [routerLink]="location()"
+        class="btn mag-btn"
+        [class.btn--solid]="variant() === 'solid'"
+        [class.btn--ghost]="variant() === 'ghost'"
+        [class.btn--light]="variant() === 'light'"
+      >
+        @if (icon()) {
+          <app-icon [name]="icon()" [size]="1" />
+        }
+        <ng-content />
+      </a>
+    }
+  

@@ -1,0 +1,70 @@
+
+    <section class="calc section" aria-label="Construction cost calculator">
+      <div class="container calc__in">
+        <div class="calc__intro">
+          <p class="text-kicker calc__kicker">Cost Estimator</p>
+          <h2 class="calc__title font-serif">
+            Estimate your <span class="gold">build cost.</span>
+          </h2>
+          <p class="calc__lead">
+            A quick, front-end only preview built on our published per-sq.ft package rates.
+          </p>
+          @let r = result();
+          <div class="calc__result" [class.calc__result--live]="!!r">
+            <span class="calc__result-label">Estimated Construction Cost</span>
+            <span class="calc__result-value font-serif">{{ resultDisplay() }}</span>
+            <div class="calc__result-meta">
+              <span>₹{{ r ? r.costPerSqft.toLocaleString('en-IN') : 0 }} / sq.ft</span>
+              <span>{{ r ? '~' + r.timelineMonths : '—' }} months</span>
+            </div>
+          </div>
+          <p class="calc__disclaimer">{{ disclaimer }}</p>
+        </div>
+
+        <form [formGroup]="form" class="calc__form" (ngSubmit)="recalc()">
+          <div class="calc__grid">
+            <div class="calc__field">
+              <label for="plotArea">Plot Area (sq.ft)</label>
+              <input id="plotArea" type="number" formControlName="plotArea" min="300" step="50" placeholder="e.g. 1200" />
+            </div>
+            <div class="calc__field">
+              <label for="builtUpArea">Built-up Area (sq.ft)</label>
+              <input id="builtUpArea" type="number" formControlName="builtUpArea" min="300" step="50" placeholder="e.g. 1800" />
+            </div>
+            <div class="calc__field">
+              <label for="floors">Floors</label>
+              <select id="floors" formControlName="floors">
+                <option [ngValue]="0.5">Single Storey</option>
+                <option [ngValue]="1">G + 1</option>
+                <option [ngValue]="2">G + 2</option>
+                <option [ngValue]="3">G + 3</option>
+              </select>
+            </div>
+            <div class="calc__field">
+              <label for="pkg">Package</label>
+              <select id="pkg" formControlName="packageId">
+                @for (p of data.packages(); track p.id) {
+                  <option [ngValue]="p.id">₹{{ p.pricePerSqft.toLocaleString('en-IN') }} / sq.ft — {{ p.name }}</option>
+                }
+              </select>
+            </div>
+            <div class="calc__field">
+              <label for="location">Location</label>
+              <input id="location" type="text" formControlName="location" placeholder="e.g. Chennai" />
+            </div>
+            <div class="calc__field">
+              <label for="type">Construction Type</label>
+              <select id="type" formControlName="constructionType">
+                <option value="Residential">Residential</option>
+                <option value="Villa">Villa</option>
+                <option value="Independent House">Independent House</option>
+                <option value="Renovation">Renovation</option>
+                <option value="Commercial">Commercial</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn--solid calc__submit">Update Estimate</button>
+        </form>
+      </div>
+    </section>
+  

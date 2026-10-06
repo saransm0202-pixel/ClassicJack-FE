@@ -1,0 +1,29 @@
+
+    <article
+      class="ps"
+      [class.ps--card]="variant() === 'card'"
+      [class.ps--last]="last()"
+    >
+      @if (variant() === 'vertical') {
+        <div class="ps__rail" aria-hidden="true">
+          <span class="ps__node">
+            <span class="ps__index font-serif">{{ step().index }}</span>
+          </span>
+          @if (!last()) {
+            <span class="ps__line"></span>
+          }
+        </div>
+      }
+      <div class="ps__card">
+        <figure class="ps__img">
+          <img [src]="step().image" [alt]="step().title" loading="lazy" appImageSafe />
+          <figcaption class="ps__fig-index font-serif" aria-hidden="true">{{ step().index }}</figcaption>
+        </figure>
+        <div class="ps__body">
+          <span class="ps__dur text-kicker">{{ step().duration }}</span>
+          <h3 class="ps__title font-serif">{{ step().title }}</h3>
+          <p class="ps__desc">{{ step().description }}</p>
+        </div>
+      </div>
+    </article>
+  

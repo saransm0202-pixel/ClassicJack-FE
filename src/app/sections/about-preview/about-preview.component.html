@@ -1,0 +1,68 @@
+
+    <section class="about section" aria-label="About Classic Jack Construction">
+      <div class="container about__in">
+        <div class="about__media" data-reveal>
+          <app-blueprint-reveal
+            [image]="SITE_IMAGES.about.main"
+            alt="Premium residence constructed by Classic Jack"
+            label="Est. 2015 — Chennai"
+          />
+          <figure class="about__stack">
+            <img [src]="SITE_IMAGES.about.stacked" alt="Architectural detailing" loading="lazy" appImageSafe />
+          </figure>
+          <span class="about__seal font-serif" aria-hidden="true">CJC</span>
+        </div>
+
+        <div class="about__content">
+          <p class="text-kicker about__kicker" data-reveal>Who We Are</p>
+          <h2 class="about__title font-serif" data-reveal>
+            We build more than houses.<br />
+            <span class="gold">We build trust.</span>
+          </h2>
+          <p class="about__copy" data-reveal>
+            Classic Jack Construction was founded on a simple belief: a home should be built with
+            the same care its family will live in it for generations. We pair architectural
+            discipline with honest pricing, milestone-based payments and a single point of
+            contact from the first sketch to the final key.
+          </p>
+
+          <div class="about__principles" data-reveal>
+            <div class="principle">
+              <span class="principle__n font-serif">01</span>
+              <p>Milestone-based construction with documented transparency at every stage.</p>
+            </div>
+            <div class="principle">
+              <span class="principle__n font-serif">02</span>
+              <p>Dedicated site supervision and weekly progress updates on WhatsApp.</p>
+            </div>
+            <div class="principle">
+              <span class="principle__n font-serif">03</span>
+              <p>Long-term durability engineered in from the soil report to the final coat.</p>
+            </div>
+          </div>
+
+          <div class="about__mini-stats" data-reveal>
+            <div>
+              <span class="stat__value"><app-counter [value]="150" suffix="+" /></span>
+              <span class="stat__label">Homes Delivered</span>
+            </div>
+            <div>
+              <span class="stat__value"><app-counter [value]="98" suffix="%" /></span>
+              <span class="stat__label">On-Time Handover</span>
+            </div>
+            <div>
+              <span class="stat__value"><app-counter [value]="25" suffix="+" /></span>
+              <span class="stat__label">Design Professionals</span>
+            </div>
+          </div>
+
+          <div class="about__cta" data-reveal>
+            <a routerLink="/about" class="btn btn--ghost">
+              Our Story
+              <app-icon name="arrow-right" [size]="1" class="btn__arrow" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  

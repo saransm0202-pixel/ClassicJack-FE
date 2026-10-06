@@ -1,0 +1,88 @@
+
+      :host {
+        display: block;
+      }
+      .proj__filters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1.6rem;
+        margin-bottom: 2.6rem;
+        padding-bottom: 1.6rem;
+        border-bottom: 1px solid var(--c-line);
+      }
+      .proj__filter-group {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+      }
+      .proj__filter-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--c-muted);
+      }
+      .proj__chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .chip {
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        padding: 0.45rem 1rem;
+        border: 1px solid var(--c-line);
+        border-radius: 100px;
+        color: var(--c-muted);
+        transition: border-color var(--dur-1), color var(--dur-1), background var(--dur-1);
+      }
+      .chip:hover {
+        border-color: var(--c-accent-line);
+        color: var(--c-light);
+      }
+      .chip.on {
+        border-color: var(--c-accent);
+        background: var(--c-accent-soft);
+        color: var(--c-accent);
+      }
+      .proj__count {
+        margin-left: auto;
+        font-size: 0.82rem;
+        color: var(--c-muted);
+        letter-spacing: 0.1em;
+      }
+      .proj__grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1.4rem;
+        grid-auto-flow: dense;
+      }
+      .proj__grid app-project-card {
+        grid-column: span 4;
+        height: clamp(300px, 30vw, 460px);
+      }
+      .proj__empty {
+        grid-column: span 12;
+        text-align: center;
+        padding: 3.5rem 1rem;
+        color: var(--c-muted);
+        border: 1px dashed var(--c-line);
+        border-radius: 4px;
+      }
+      @media (max-width: 1023px) {
+        .proj__grid app-project-card {
+          grid-column: span 6;
+          height: 360px;
+        }
+        .proj__count {
+          margin-left: 0;
+          width: 100%;
+        }
+      }
+      @media (max-width: 640px) {
+        .proj__grid app-project-card {
+          grid-column: span 12;
+          height: 340px;
+        }
+      }
+    

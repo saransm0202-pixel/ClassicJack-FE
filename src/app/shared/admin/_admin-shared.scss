@@ -1,0 +1,87 @@
+/* @use'd (scoped) inside admin components so Classic Jack's public
+   global design system stays untouched. */
+
+.container {
+  width: 100%;
+  max-width: 1260px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 32px);
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.section-label::before {
+  content: '';
+  width: 34px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-label--center {
+  text-align: center;
+}
+
+.section-label--center::after {
+  content: '';
+  width: 34px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 32px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: transform var(--ease) var(--ease-spring),
+    box-shadow var(--ease) var(--ease-spring),
+    background-color var(--ease) var(--ease-spring),
+    color var(--ease) var(--ease-spring);
+  will-change: transform;
+}
+
+.btn--primary {
+  background: linear-gradient(120deg, #a87f46 0%, #b99147 48%, #c6a15b 100%);
+  background-size: 170% 170%;
+  background-position: 0% 50%;
+  color: #1a1408;
+  box-shadow: 0 14px 34px -10px rgba(198, 161, 91, 0.5);
+}
+
+.btn--primary:hover {
+  background-position: 100% 50%;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 46px -12px rgba(198, 161, 91, 0.62);
+}
+
+.btn--ghost {
+  border: 1px solid rgba(244, 241, 234, 0.55);
+  color: var(--ivory);
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(6px);
+}
+
+.btn--ghost:hover {
+  background: var(--ivory);
+  color: var(--ink);
+  transform: translateY(-3px);
+}
+
+.btn--sm {
+  padding: 11px 22px;
+  font-size: 13.5px;
+}

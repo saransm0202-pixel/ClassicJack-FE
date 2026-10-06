@@ -1,0 +1,54 @@
+
+    <section class="tl section" aria-label="Construction timeline">
+      <div class="container tl__head">
+        <section-heading
+          kicker="The Journey"
+          title="From empty plot"
+          titleAccent="to key handover."
+          subtitle="Scroll to watch a home rise — the same way every Classic Jack project does."
+        />
+      </div>
+
+      <div class="tl__body container">
+        <div class="tl__visual">
+          <div class="tl__stage">
+            @for (s of data.timelineStages(); track s.id; let i = $index) {
+              <figure class="tl__frame" [class.tl__frame--active]="i === activeStage()">
+                <img [src]="s.image" [alt]="s.label" loading="lazy" appImageSafe />
+              </figure>
+            }
+            <div class="tl__veil" aria-hidden="true"></div>
+            <span class="tl__label font-serif">{{ data.timelineStages()[activeStage()].label }}</span>
+            <span class="tl__pct font-serif">{{ Math.round(progress() * 100) }}%</span>
+          </div>
+
+          <div class="tl__caption" aria-live="polite">
+            <span class="tl__caption-index"
+              >{{ activeStage() + 1 }}<small> / {{ data.timelineStages().length }}</small></span
+            >
+            <div class="tl__caption-copy">
+              <h3 class="tl__caption-title font-serif">{{ data.timelineStages()[activeStage()].label }}</h3>
+              <p class="tl__caption-desc">{{ data.timelineStages()[activeStage()].description }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl__rail">
+          <span class="tl__rail-line"><span class="tl__rail-fill" [style.height.%]="progress() * 100"></span></span>
+          <ol class="tl__steps">
+            @for (st of data.timelineStages(); track st.id; let i = $index) {
+              <li class="tl__step" [class.tl__step--active]="i === activeStage()">
+                <span class="tl__node">
+                  <span class="tl__node-dot"></span>
+                </span>
+                <div class="tl__copy">
+                  <span class="tl__copy-label">{{ st.label }}</span>
+                  <p class="tl__copy-desc">{{ st.description }}</p>
+                </div>
+              </li>
+            }
+          </ol>
+        </div>
+      </div>
+    </section>
+  

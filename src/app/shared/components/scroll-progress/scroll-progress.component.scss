@@ -1,0 +1,18 @@
+
+      :host {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        z-index: var(--z-header);
+        pointer-events: none;
+      }
+      .sp {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, var(--c-accent-2), var(--c-accent));
+        box-shadow: 0 0 12px rgba(198, 161, 91, 0.5);
+        transition: width 0.1s linear;
+      }
+    

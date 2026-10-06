@@ -1,0 +1,70 @@
+<page-hero
+  kicker="Contact"
+  [title]="'Start A Conversation'"
+  subtitle="Tell us about your plot, your budget and your timeline. We will answer with a clear plan — not generic brochures."
+  current="Contact"
+  [image]="SITE_IMAGES.contact.main"
+  alt="Contact Classic Jack Construction"
+/>
+
+<section class="con section">
+  <div class="container">
+    <div class="con__grid">
+      <div class="con__say">
+        <p class="text-kicker mb-xs">Reach Us Directly</p>
+        <h2 class="h2 font-serif mb-md">Talk to an engineer, not a sales script.</h2>
+        <p>
+          Prefer to skip the form? Call us straight, write to us, or drop a message on WhatsApp. A senior
+          project engineer — not a call centre — will respond.
+        </p>
+
+        <div class="con__detail">
+          <app-icon name="phone" [size]="1.2" />
+          <div>
+            <p class="con__detail-label">Phone</p>
+            <p class="con__detail-val"><a [href]="cfg.phoneHref()">{{ cfg.phoneDisplay() }}</a></p>
+          </div>
+        </div>
+
+        <div class="con__detail">
+          <app-icon name="mail" [size]="1.2" />
+          <div>
+            <p class="con__detail-label">Email</p>
+            <p class="con__detail-val"><a [href]="'mailto:' + cfg.email()">{{ cfg.email() }}</a></p>
+          </div>
+        </div>
+
+        <div class="con__detail">
+          <app-icon name="pin" [size]="1.2" />
+          <div>
+            <p class="con__detail-label">Office</p>
+            <p class="con__detail-val">
+              @if (cfg.mapHref()) {
+                <a [href]="cfg.mapHref()" target="_blank" rel="noopener noreferrer">{{ cfg.address() }}</a>
+              } @else {
+                {{ cfg.address() }}
+              }
+            </p>
+          </div>
+        </div>
+
+        <div class="con__detail">
+          <app-icon name="clock" [size]="1.2" />
+          <div>
+            <p class="con__detail-label">Working Hours</p>
+            <p class="con__detail-val">{{ hours }}</p>
+          </div>
+        </div>
+
+        <a class="con__whats" [href]="cfg.whatsappHref()" target="_blank" rel="noopener">
+          <app-icon name="whatsapp" [size]="1.2" />
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-estimate />
+
+<app-final-cta />
